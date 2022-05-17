@@ -17,4 +17,7 @@ export default {
       '@aws-amplify/core': '@aws-amplify/core/lib',
       '@aws-amplify/auth': '@aws-amplify/auth/lib',
     },
+    buildModules: [
+      '@pinia/nuxt'
+    ],
 }

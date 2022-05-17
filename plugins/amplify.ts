@@ -3,7 +3,7 @@ import { defineNuxtPlugin } from '#app';
 import { Amplify } from '@aws-amplify/core';
 import { Auth } from '@aws-amplify/auth';
 
-export default defineNuxtPlugin(nuxtApp => {
+export default defineNuxtPlugin(_ => {
     Amplify.configure({
         Auth: {
             region: 'us-east-1',

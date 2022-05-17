@@ -1,6 +1,7 @@
 <template>
   <div>
     <Script src="./js/polyfills.js" />
-    <NuxtPage />
+    <Script src="https://kit.fontawesome.com/11146ec54d.js" crossorigin="anonymous" />
+    <NuxtPage/>
   </div>
 </template>
