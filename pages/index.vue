@@ -224,6 +224,7 @@
             break;
         }
         showModal.value = step
+        console.log('sign up step', step)
     }
 
     async function signMeUp() {
@@ -234,6 +235,7 @@
           name: uname.value,
         });
         showModal.value = 'step5'
+        console.log('signed up successfully')
       } catch (error) {
         alert('Error signing up, please check console for error detail')
         console.log('error signing up:', error)
@@ -247,10 +249,23 @@
           email: email.value,
           verificationCode: verificationCode.value
         });
+        console.log('code confirmed successfully')
         await signIn();
       } catch (error) {
         alert('Error confirming verification code, please check console for error detail')
         console.log('error confirming verification code:', error)
+      }
+    }
+
+    async function resendVerificationCode() {
+      try {
+        await authStore.resendSignUp({
+          email: email.value,
+        });
+        console.log('code resent successfully');
+      } catch (error) {
+        alert('Error resending verification code, please check console for error detail')
+        console.log('error resending verification code:', error)
       }
     }
 
@@ -260,22 +275,11 @@
           email: email.value,
           password: password.value,
         })
+        console.log('signed in successfully');
       } catch (error) {
         authStore.logoutUser();
         alert('Error signing in, please check console for error detail')
         console.log('error signing in:', error)
-      }
-    }
-
-    async function resendVerificationCode() {
-      try {
-        await this.resendSignUp({
-          email: this.email,
-        });
-        console.log('code resent successfully');
-      } catch (error) {
-        alert('Error resending verification code, please check console for error detail')
-        console.log('error resending verification code:', error)
       }
     }
 </script>
