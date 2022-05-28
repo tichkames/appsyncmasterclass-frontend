@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useTwitterStore } from './twitter'
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -53,7 +54,8 @@ export const useAuthStore = defineStore({
         const { $auth } = useNuxtApp();
         const user = await $auth.signIn(form.email, form.password);
         await this.loginUser(user);
-        // await dispatch("twitter/setProfile", null, { root: true });
+        const twitter = useTwitterStore()
+        twitter.setProfile()
         // await dispatch("twitter/subscribeNotifications", null, { root: true });
         const router = useRouter()
         router.push('/home')
@@ -64,7 +66,8 @@ export const useAuthStore = defineStore({
         if (user) {
           console.log('user is logged in already')
           await this.loginUser(user);
-        //   await dispatch("twitter/setProfile", null, { root: true });
+          const twitter = useTwitterStore()
+          twitter.setProfile()
         //   await dispatch("twitter/subscribeNotifications", null, { root: true });
         }
       },

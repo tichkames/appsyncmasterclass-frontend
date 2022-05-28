@@ -2,6 +2,7 @@ import { defineNuxtPlugin } from '#app';
 
 import { Amplify } from '@aws-amplify/core';
 import { Auth } from '@aws-amplify/auth';
+import { API } from '@aws-amplify/api';
 
 export default defineNuxtPlugin(_ => {
     Amplify.configure({
@@ -22,7 +23,8 @@ export default defineNuxtPlugin(_ => {
     console.log('Configured Amplify plugin successfully.')
     return {
       provide: {
-        auth: Auth
+        auth: Auth,
+        api: API
       }
     }
 })
